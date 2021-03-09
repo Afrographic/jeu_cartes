@@ -1,0 +1,204 @@
+* {
+  outline: none;
+  transition: 0.5s;
+  font-family: 'google sans';
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+img.carte {
+  width: 8.5vw;
+}
+
+.active_card .carte {
+  position: relative;
+  top: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+.player .carte:hover {
+  top: -5px;
+  box-shadow: 0px 9px 12px #00000030;
+}
+.cartes_banques {
+  position: relative;
+  top: -59px;
+  left: -72px;
+}
+.cartes_banques img.carte {
+  box-shadow: -1px 1px 3px 1px #00000059;
+  border-radius: 8px;
+  position: absolute;
+}
+.banque {
+  padding: 12px;
+  width: 18vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fbfbfb;
+  box-shadow: 9px 4px 16px 2px #00000029;
+  z-index: 2;
+  /* border-right: 1px solid rgba(170, 170, 170, 0.418); */
+}
+.banque .banque_item {
+  flex: 1;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.piocher {
+  cursor: pointer;
+  background-color: #007fce !important;
+}
+
+.piocher:hover {
+  transform: scale(1.2);
+}
+
+/* Player pannel */
+
+.players_pannel {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.computer_side,
+.player_side,
+.playing_table {
+  flex: 1;
+  /* background-color: orange; */
+  margin: 10px 0px;
+}
+
+.playing_table {
+  /* pointer-events: none; */
+}
+
+.computer_side {
+  pointer-events: none;
+}
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.currentCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.player_name {
+  padding: 8px 12px;
+  border-radius: 18px;
+  color: #fff;
+  background-color: #555;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  top: 50%;
+  right: 0px;
+  z-index: 2;
+}
+
+.showExtraCard {
+  padding: 8px 12px;
+  border-radius: 18px;
+  color: #fff;
+  background-color: #555;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 60px;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+}
+.showExtraCard:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.showExtraCard_active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.extraCardContainer {
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  left: 100px;
+  max-height: 80vh;
+  max-width: 300px;
+  background-color: white;
+  box-shadow: 0px 0px 35px rgba(170, 170, 170, 0.247);
+  z-index: 5;
+  border-radius: 13px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-15px);
+}
+
+.extraCardContainer_active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.extraCardContainer .content {
+  overflow: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  max-height: 80vh;
+  max-width: 300px;
+  overflow: auto;
+}
+.cartes_banques img:last-child {
+  cursor: pointer;
+}
+.cartes_banques img:last-child:hover {
+  transform: translateX(5px);
+}

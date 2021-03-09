@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function $(target) {
+        return document.querySelector(target);
+      }
+      function $$(target) {
+        return document.querySelectorAll(target);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="banque">
+        <div class="banque_item">Banque</div>
+        <div class="banque_item">
+          <div class="piocher player_name" onclick="piocher()">Piocher</div>
+          <div class="cartes_banques" id="banques"></div>
+        </div>
+      </div>
+      <div class="players_pannel">
+        <div class="layout computer_side active_card">
+          <div class="player_name">Computer</div>
+          <div class="showExtraCard" id="computer_extra_cards">+</div>
+          <div class="currentCard" id="computer"></div>
+        </div>
+        <div class="layout playing_table">
+          <div class="currentCard" id="center_game"></div>
+        </div>
+        <div class="layout player_side active_card player">
+          <div class="player_name">Afrographics</div>
+          <div class="showExtraCard" id="player_extra_cards">+</div>
+          <div class="extraCardContainer">
+            <div class="content" id="extra_cards_container"></div>
+          </div>
+          <div class="currentCard" id="player"></div>
+        </div>
+      </div>
+    </div>
+    <script src="cardGame.js"></script>
+    <script src="ui_style.js"></script>
+  </body>
+</html>
