@@ -1,0 +1,26 @@
+.popper_msg {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  background-color: #3c3c3c;
+  padding: 12px;
+  color: white;
+  font-size: 0.8em;
+}
+.popper_msg:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 15px;
+  height: 15px;
+  background-color: #3c3c3c;
+}
+
+.popper_msg_active {
+  top: 0%;
+  opacity: 1;
+}

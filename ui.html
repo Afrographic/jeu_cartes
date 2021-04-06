@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Card Game</title>
+    <title>Check games</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="overlay.css" />
+    <link rel="stylesheet" href="lib/popper.css" />
+    <link rel="icon" href="cartes_images/icone.jpg" />
     <script>
       function $(target) {
         return document.querySelector(target);
@@ -12,28 +15,185 @@
       function $$(target) {
         return document.querySelectorAll(target);
       }
+      function ShowJcommandeCards() {
+        $('.alertBox').classList.add('alertBox_active');
+        $('.overlay').classList.add('overlay_active');
+      }
+      function moveJCommandeEndAndStopFront(carte_pc) {
+        let J_commandesArray = [];
+        let CarresSansJ = [];
+        let StopArray = [];
+        let deux_transparent = [];
+        let pic = [];
+        carte_pc.forEach(function (card_item) {
+          if (
+            card_item == 52 ||
+            card_item == 50 ||
+            card_item == 51 ||
+            card_item == 49
+          ) {
+            J_commandesArray.push(card_item);
+          } else if (
+            card_item == 1 ||
+            card_item == 2 ||
+            card_item == 3 ||
+            card_item == 4
+          ) {
+            StopArray.push(card_item);
+          } else if (
+            card_item == 5 ||
+            card_item == 6 ||
+            card_item == 7 ||
+            card_item == 8
+          ) {
+            deux_transparent.push(card_item);
+          } else if (
+            card_item == 25 ||
+            card_item == 26 ||
+            card_item == 27 ||
+            card_item == 28 ||
+            card_item == 53 ||
+            card_item == 54
+          ) {
+            pic.push(card_item);
+          } else {
+            CarresSansJ.push(card_item);
+          }
+        });
+
+        carte_pc = pic.concat(
+          StopArray.concat(
+            CarresSansJ.concat(deux_transparent.concat(J_commandesArray))
+          )
+        );
+
+        console.log(carte_pc);
+        return carte_pc;
+      }
+
+      let jCommande_correspondance = [];
+      let cardCorrespondance = [];
+      let transformX = 0;
+      let carteAMettreBanque = [];
+      let carteARamasser = 0;
+
+      function Start() {
+        $('.starter').classList.add('starter_inactive');
+      }
     </script>
   </head>
   <body>
+    <a href="https://www.instagram.com/afrographics_/?hl=fr" target="_blank"
+      ><img
+        src="cartes_images/ag_logo.png"
+        alt=""
+        width="60px"
+        class="logo_pos"
+        title="By Afrographic Studio"
+      />
+    </a>
+    <div
+      src="cartes_images/titleGame.jpg"
+      alt=""
+      class="starter"
+      onclick="Start();"
+    ></div>
+    <div class="pc_commade">
+      <!-- <img src="cartes_images/4.png" alt="" class='carte'>  -->
+    </div>
+    <div class="overlay"></div>
+    <div class="alertBox">
+      <h3 style="text-align: center; grid-column: 5 / 1">
+        Veillez choisir le type de carte a commander
+      </h3>
+      <div id="arachide">
+        <img
+          src="cartes_images/C_1.png"
+          alt=""
+          class="carte"
+          onclick="HideJcommandeCards(1)"
+        />
+      </div>
+      <div id="Coeur">
+        <img
+          src="cartes_images/C_2.png"
+          alt=""
+          class="carte"
+          onclick="HideJcommandeCards(2)"
+        />
+      </div>
+      <div id="Biscuit">
+        <img
+          src="cartes_images/C_3.png"
+          alt=""
+          class="carte"
+          onclick="HideJcommandeCards(3)"
+        />
+      </div>
+      <div id="Macabo">
+        <img
+          src="cartes_images/C_4.png"
+          alt=""
+          class="carte"
+          onclick="HideJcommandeCards(4)"
+        />
+      </div>
+    </div>
+    <a href="ui.html">
+      <div class="pronostique">
+        <div class="prono_container">
+          <img
+            src="cartes_images/ailes.png"
+            alt=""
+            width="500px"
+            class="aile2"
+          />
+          <img
+            src="cartes_images/gameoverLost.png"
+            alt=""
+            class="message_gameover"
+          />
+          <img
+            src="cartes_images/ailes.png"
+            alt=""
+            width="500px"
+            class="aile"
+          />
+        </div>
+      </div>
+    </a>
     <div class="container">
       <div class="banque">
-        <div class="banque_item">Banque</div>
+        <div class="banque_item"></div>
         <div class="banque_item">
-          <div class="piocher player_name" onclick="piocher()">Piocher</div>
+          <div class="piocher" onclick="piocher()"></div>
           <div class="cartes_banques" id="banques"></div>
         </div>
       </div>
       <div class="players_pannel">
         <div class="layout computer_side active_card">
-          <div class="player_name">Computer</div>
           <div class="showExtraCard" id="computer_extra_cards">+</div>
           <div class="currentCard" id="computer"></div>
         </div>
         <div class="layout playing_table">
-          <div class="currentCard" id="center_game"></div>
+          <div class="currentCard" id="center_game">
+            <div class="centerCardRederer" id="centerCardCOntainer"></div>
+          </div>
         </div>
-        <div class="layout player_side active_card player">
-          <div class="player_name">Afrographics</div>
+        <div class="piocher_center">
+          <div>
+            <img
+              src="cartes_images/piocher.png"
+              alt=""
+              width="50px"
+              style="cursor: pointer"
+              onclick="piocher()"
+              class="pio"
+              title="Piocher une carte"
+            />
+          </div>
+        </div>
+        <div class="layout player_side active_card player" id="loser">
           <div class="showExtraCard" id="player_extra_cards">+</div>
           <div class="extraCardContainer">
             <div class="content" id="extra_cards_container"></div>
@@ -42,7 +202,12 @@
         </div>
       </div>
     </div>
-    <script src="cardGame.js"></script>
-    <script src="ui_style.js"></script>
+    <script src="engine/gestionPic.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/computer_play.js"></script>
+    <script src="scripts/cardGame.js"></script>
+    <script src="scripts/ui_style.js"></script>
+    <script src="lib/popper.js"></script>
+    <script src="engine/comande_carte.js"></script>
   </body>
 </html>

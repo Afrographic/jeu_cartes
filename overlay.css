@@ -1,0 +1,53 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.37);
+  cursor: pointer;
+
+  /*pour desactiver tout les evenements de souris*/
+  pointer-events: none;
+  /*fin*/
+  opacity: 0;
+  z-index: 43;
+}
+
+.overlay_active {
+  opacity: 1;
+  /*On remets tout comme avant*/
+  pointer-events: auto;
+}
+
+.alertBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  text-align: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 13px;
+  /* width: 400px; */
+  pointer-events: none;
+  z-index: 45;
+}
+
+/*On ajoutera cette classe quand le bouton sera presse au message*/
+.alertBox_active {
+  opacity: 1;
+  top: 50%;
+  pointer-events: auto;
+}
+
+.alertBox img {
+  cursor: pointer;
+}
