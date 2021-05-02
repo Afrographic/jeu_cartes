@@ -206,8 +206,8 @@ function card_correspondance() {
   }
   cardCorrespondance.push(coreJN);
   cardCorrespondance.push(coreJR);
-  console.log('Correspondances entre les cartes');
-  console.log(cardCorrespondance);
+  //console.log('Correspondances entre les cartes');
+  //console.log(cardCorrespondance);
 
   cardCorrespondance[14].push(13, 14, 15, 16);
   cardCorrespondance[15].push(13, 14, 15, 16);
@@ -269,10 +269,10 @@ let extraPlayerCards = 0;
 let extraComputerCards = 0;
 
 function initUI() {
-  $('.piocher_center').style.pointerEvents = 'auto';
-  $('.piocher').style.pointerEvents = 'auto';
-  $('.banque').style.pointerEvents = 'auto';
-  $('#extra_cards_container').innerHTML = '';
+  $(".piocher_center").style.pointerEvents = "auto";
+  $(".piocher").style.pointerEvents = "auto";
+  $(".banque").style.pointerEvents = "auto";
+  $("#extra_cards_container").innerHTML = "";
   let loopLimit = cartesJouers[1].length;
   let compuCardsLimit = cartesJouers[0].length;
 
@@ -280,11 +280,11 @@ function initUI() {
     loopLimit = 7;
 
     extraPlayerCards = cartesJouers[1].length - 7;
-    $('#player_extra_cards').classList.add('showExtraCard_active');
-    $('#player_extra_cards').innerHTML = `+ ${extraPlayerCards}`;
+    $("#player_extra_cards").classList.add("showExtraCard_active");
+    $("#player_extra_cards").innerHTML = `+ ${extraPlayerCards}`;
 
     for (let i = 0; i < extraPlayerCards; i++) {
-      $('#extra_cards_container').innerHTML += `
+      $("#extra_cards_container").innerHTML += `
     <img src="cartes_images/${
       cartesJouers[1][i + 7]
     }.png" alt="" class="carte" card_id=${cartesJouers[1][i + 7]} />
@@ -292,25 +292,25 @@ function initUI() {
     }
   } else {
     extraPlayerCards = 0;
-    $('#player_extra_cards').innerHTML = '';
-    $('#player_extra_cards').classList.remove('showExtraCard_active');
+    $("#player_extra_cards").innerHTML = "";
+    $("#player_extra_cards").classList.remove("showExtraCard_active");
   }
 
   if (compuCardsLimit >= 8) {
     compuCardsLimit = 7;
 
     extraComputerCards = cartesJouers[0].length - 7;
-    $('#computer_extra_cards').classList.add('showExtraCard_active');
-    $('#computer_extra_cards').innerHTML = `+ ${extraComputerCards}`;
+    $("#computer_extra_cards").classList.add("showExtraCard_active");
+    $("#computer_extra_cards").innerHTML = `+ ${extraComputerCards}`;
   } else {
     extraComputerCards = 0;
-    $('#computer_extra_cards').innerHTML = '';
-    $('#computer_extra_cards').classList.remove('showExtraCard_active');
+    $("#computer_extra_cards").innerHTML = "";
+    $("#computer_extra_cards").classList.remove("showExtraCard_active");
   }
 
-  $('#player').innerHTML = '';
+  $("#player").innerHTML = "";
   for (let i = 0; i < loopLimit; i++) {
-    $('#player').innerHTML += `
+    $("#player").innerHTML += `
     <img
     src="cartes_images/${cartesJouers[1][i]}.png"
     alt=""
@@ -322,7 +322,7 @@ function initUI() {
   }
 
   // Reset computer cards
-  $('#computer').innerHTML = '';
+  $("#computer").innerHTML = "";
   for (let i = 0; i < compuCardsLimit; i++) {
     // $('#computer').innerHTML += `
     // <img
@@ -334,7 +334,7 @@ function initUI() {
     // />
     // `;
 
-    $('#computer').innerHTML += `
+    $("#computer").innerHTML += `
     <img
     src="cartes_images/back.png"
     alt=""
@@ -346,23 +346,23 @@ function initUI() {
   }
 
   function addActiveToExtraCardsContainer() {
-    $('.extraCardContainer').classList.contains('extraCardContainer_active')
-      ? $('.extraCardContainer').classList.remove('extraCardContainer_active')
-      : $('.extraCardContainer').classList.add('extraCardContainer_active');
+    $(".extraCardContainer").classList.contains("extraCardContainer_active")
+      ? $(".extraCardContainer").classList.remove("extraCardContainer_active")
+      : $(".extraCardContainer").classList.add("extraCardContainer_active");
   }
 
-  $('#player_extra_cards').onmouseover = addActiveToExtraCardsContainer;
+  $("#player_extra_cards").onmouseover = addActiveToExtraCardsContainer;
 
-  $('#player_extra_cards').onclick = addActiveToExtraCardsContainer;
-  $('.extraCardContainer').onmouseout = addActiveToExtraCardsContainer;
-  $('.extraCardContainer').onclick = addActiveToExtraCardsContainer;
+  $("#player_extra_cards").onclick = addActiveToExtraCardsContainer;
+  $(".extraCardContainer").onmouseout = addActiveToExtraCardsContainer;
+  $(".extraCardContainer").onclick = addActiveToExtraCardsContainer;
 
-  $('.players_pannel').onclick = addActiveToExtraCardsContainer;
+  $(".players_pannel").onclick = addActiveToExtraCardsContainer;
 
   // Reset banque
-  $('#banques').innerHTML = '';
+  $("#banques").innerHTML = "";
   for (let i = 0; i < cartes.length; i++) {
-    $('#banques').innerHTML += `
+    $("#banques").innerHTML += `
     <img
     src="cartes_images/back.png"
     alt=""
@@ -374,9 +374,9 @@ function initUI() {
 }
 
 // Reset carte de depart
-console.log($('#center_game'));
-console.log($('#centerCardCOntainer'));
-$('#centerCardCOntainer').innerHTML += ` <img
+//console.log($('#center_game'));
+//console.log($('#centerCardCOntainer'));
+$("#centerCardCOntainer").innerHTML += ` <img
 src="cartes_images/${carte_depart}.png"
 alt=""
 class="carte"
@@ -386,7 +386,7 @@ card_id=${carte_depart}
 initUI();
 
 function piocher() {
-  $('.extraCardContainer').classList.add('extraCardContainer_active');
+  $(".extraCardContainer").classList.add("extraCardContainer_active");
   cartesJouers[1].push(cartes[0]);
   cartes.splice(0, 1);
 
@@ -394,7 +394,7 @@ function piocher() {
   computerPlay();
 }
 
-$('.cartes_banques img:last-child').onclick = piocher;
+$(".cartes_banques img:last-child").onclick = piocher;
 
 function render() {
   cardCorrespondance = [];
@@ -402,31 +402,31 @@ function render() {
   initUI();
   resetBanque();
   drag_carte();
-  $('.cartes_banques img:last-child').onclick = piocher;
+  $(".cartes_banques img:last-child").onclick = piocher;
 }
 
-console.log('card correspodances');
-console.log(cardCorrespondance);
+//console.log('card correspodances');
+//console.log(cardCorrespondance);
 
 function gameover(playerWin) {
   // Annule le overlay du pc qui commande
-  if ($('.pc_commade').style.opacity == '1') {
-    $('.pc_commade').style.opacity = '0';
-    $('.pc_commade').style.transform = 'translateY(16px)';
+  if ($(".pc_commade").style.opacity == "1") {
+    $(".pc_commade").style.opacity = "0";
+    $(".pc_commade").style.transform = "translateY(16px)";
   }
   // Annule le overlay de Jcommande
-  $('.alertBox').classList.remove('alertBox_active');
-  $('.overlay').classList.remove('overlay_active');
+  $(".alertBox").classList.remove("alertBox_active");
+  $(".overlay").classList.remove("overlay_active");
 
-  $('.container').classList.add('container_off');
-  $('.pronostique').classList.add('pronostique_active');
+  $(".container").classList.add("container_off");
+  $(".pronostique").classList.add("pronostique_active");
 
   let value_path =
     playerWin == false
-      ? 'cartes_images/gameoverLost.png'
-      : 'cartes_images/gameover.png';
-  $('.message_gameover').setAttribute('src', value_path);
+      ? "cartes_images/gameoverLost.png"
+      : "cartes_images/gameover.png";
+  $(".message_gameover").setAttribute("src", value_path);
 
-  console.log('Pronos');
-  console.log(value_path);
+  //console.log('Pronos');
+  //console.log(value_path);
 }

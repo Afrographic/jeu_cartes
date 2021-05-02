@@ -24,10 +24,10 @@ function moveJCommandeEndAndStopFront(carte_pc) {
 
   carte_pc = StopArray.concat(CarresSansJ.concat(J_commandesArray));
 
-  console.log(StopArray);
-  console.log(CarresSansJ);
-  console.log(J_commandesArray);
-  console.log(carte_pc);
+  //console.log(StopArray);
+  //console.log(CarresSansJ);
+  //console.log(J_commandesArray);
+  //console.log(carte_pc);
   return carte_pc;
 }
 

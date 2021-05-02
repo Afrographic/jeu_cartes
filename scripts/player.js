@@ -1,13 +1,13 @@
 function player(that) {
   that.style.opacity = 1;
-  let carteAjouer = parseInt(that.getAttribute('card_id'));
+  let carteAjouer = parseInt(that.getAttribute("card_id"));
   let c_carteDansLeJeu;
   if (jCommande_correspondance.length == 0) {
     c_carteDansLeJeu = cardCorrespondance[carte_depart - 1];
   } else {
     c_carteDansLeJeu = jCommande_correspondance;
   }
-  console.log(c_carteDansLeJeu);
+
   // SI l'ordinateur joue une J-commade
   if (
     carteAjouer == 49 ||
@@ -16,18 +16,18 @@ function player(that) {
     carteAjouer == 52
   ) {
     ShowJcommandeCards();
-    console.log('VOus avez jouez une J_Commande');
+    //console.log("VOus avez jouez une J_Commande");
   }
 
   if (c_carteDansLeJeu.indexOf(carteAjouer) !== -1) {
     transformX += 15;
-    $('.centerCardRederer').style.transform = `translateX(-${transformX}px)`;
+    $(".centerCardRederer").style.transform = `translateX(-${transformX}px)`;
     if (jCommande_correspondance.length != 0) {
       jCommande_correspondance = [];
     }
-    if ($('.pc_commade').style.opacity == '1') {
-      $('.pc_commade').style.opacity = '0';
-      $('.pc_commade').style.transform = 'translateY(16px)';
+    if ($(".pc_commade").style.opacity == "1") {
+      $(".pc_commade").style.opacity = "0";
+      $(".pc_commade").style.transform = "translateY(16px)";
     }
     // Gestion de la J-Commade
     picker = false;
@@ -39,34 +39,40 @@ function player(that) {
       carteAjouer == 28
     ) {
       carteARamasser += 2;
-      if(cartesJouers[0].indexOf(25)==-1 && cartesJouers[0].indexOf(26)==-1 &&
-      cartesJouers[0].indexOf(27)==-1 && cartesJouers[0].indexOf(28)==-1 && 
-      cartesJouers[0].indexOf(53)==-1 && cartesJouers[0].indexOf(54)==-1 ){
-
-        for( let i = 0 ; i < carteARamasser ; i++){
+      if (
+        cartesJouers[0].indexOf(25) == -1 &&
+        cartesJouers[0].indexOf(26) == -1 &&
+        cartesJouers[0].indexOf(27) == -1 &&
+        cartesJouers[0].indexOf(28) == -1 &&
+        cartesJouers[0].indexOf(53) == -1 &&
+        cartesJouers[0].indexOf(54) == -1
+      ) {
+        for (let i = 0; i < carteARamasser; i++) {
           cartesJouers[0].push(cartes[i]);
         }
 
-       
         cartes.splice(0, carteARamasser);
         picker = true;
         carteARamasser = 0;
       }
-        
-        console.log("Voici les cartes a ramasser maintenant");
-        console.log(carteARamasser);
 
-     
-      // console.log('PC ramasse deux cartes');
+      //console.log("Voici les cartes a ramasser maintenant");
+      //console.log(carteARamasser);
+
+      // //console.log('PC ramasse deux cartes');
     }
     if (carteAjouer == 53 || carteAjouer == 54) {
       carteARamasser += 4;
 
-      if(cartesJouers[0].indexOf(25)==-1 && cartesJouers[0].indexOf(26)==-1 &&
-      cartesJouers[0].indexOf(27)==-1 && cartesJouers[0].indexOf(28)==-1 && 
-      cartesJouers[0].indexOf(53)==-1 && cartesJouers[0].indexOf(54)==-1 ){
-
-        for( let i = 0 ; i < carteARamasser ; i++){
+      if (
+        cartesJouers[0].indexOf(25) == -1 &&
+        cartesJouers[0].indexOf(26) == -1 &&
+        cartesJouers[0].indexOf(27) == -1 &&
+        cartesJouers[0].indexOf(28) == -1 &&
+        cartesJouers[0].indexOf(53) == -1 &&
+        cartesJouers[0].indexOf(54) == -1
+      ) {
+        for (let i = 0; i < carteARamasser; i++) {
           cartesJouers[0].push(cartes[i]);
         }
 
@@ -75,12 +81,11 @@ function player(that) {
         picker = true;
         carteARamasser = 0;
       }
-       
-      console.log("Voici les cartes a ramasser maintenant");
-      console.log(carteARamasser);
- 
-      
-      // console.log('PC ramasse quatres cartes');
+
+      //console.log("Voici les cartes a ramasser maintenant");
+      //console.log(carteARamasser);
+
+      // //console.log('PC ramasse quatres cartes');
     }
     // Gestion des 2 transparent
     if (
@@ -96,15 +101,15 @@ function player(that) {
         cartes = cartes.concat(carteAMettreBanque);
         cartes = init_(cartes);
         carteAMettreBanque = [];
-        let lastChild = $('#centerCardCOntainer').lastElementChild;
-        $('#centerCardCOntainer').innerHTML = '';
-        $('#centerCardCOntainer').appendChild(lastChild);
+        let lastChild = $("#centerCardCOntainer").lastElementChild;
+        $("#centerCardCOntainer").innerHTML = "";
+        $("#centerCardCOntainer").appendChild(lastChild);
 
         transformX = 0;
-        $('.centerCardRederer').style.transform = `translateX(-15px)`;
+        $(".centerCardRederer").style.transform = `translateX(-15px)`;
       }
 
-      $('#centerCardCOntainer').innerHTML += `<img
+      $("#centerCardCOntainer").innerHTML += `<img
       src="cartes_images/${carteAjouer}.png"
       alt=""
       class="carte"
@@ -112,12 +117,12 @@ function player(that) {
       // On remplace la carte principale dans le jeu
       carte_depart = carteAjouer;
     } else {
-      $('#centerCardCOntainer').innerHTML =
+      $("#centerCardCOntainer").innerHTML =
         `<img
       src="cartes_images/${carteAjouer}.png"
       alt=""
       class="carte"
-      />` + $('#centerCardCOntainer').innerHTML;
+      />` + $("#centerCardCOntainer").innerHTML;
       // Il a jouer un 2 transparent , anisi la carte de depart stays the same
       // On ajoute le transparent a la banque
 
@@ -129,11 +134,11 @@ function player(that) {
         carteAMettreBanque = [];
 
         transformX = 0;
-        $('.centerCardRederer').style.transform = `translateX(-15px)`;
+        $(".centerCardRederer").style.transform = `translateX(-15px)`;
 
-        let lastChild = $('#centerCardCOntainer').lastElementChild;
-        $('#centerCardCOntainer').innerHTML = '';
-        $('#centerCardCOntainer').appendChild(lastChild);
+        let lastChild = $("#centerCardCOntainer").lastElementChild;
+        $("#centerCardCOntainer").innerHTML = "";
+        $("#centerCardCOntainer").appendChild(lastChild);
       }
       // On retire cette carte sur les mains du joeur
     }
@@ -170,7 +175,7 @@ function player(that) {
       picker = false;
     }
   } else {
-    that.style.transform = 'translateY(0px)';
+    that.style.transform = "translateY(0px)";
   }
-  // console.log(that);
+  // //console.log(that);
 }

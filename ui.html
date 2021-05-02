@@ -16,8 +16,8 @@
         return document.querySelectorAll(target);
       }
       function ShowJcommandeCards() {
-        $('.alertBox').classList.add('alertBox_active');
-        $('.overlay').classList.add('overlay_active');
+        $(".alertBox").classList.add("alertBox_active");
+        $(".overlay").classList.add("overlay_active");
       }
       function moveJCommandeEndAndStopFront(carte_pc) {
         let J_commandesArray = [];
@@ -78,7 +78,7 @@
       let carteARamasser = 0;
 
       function Start() {
-        $('.starter').classList.add('starter_inactive');
+        $(".starter").classList.add("starter_inactive");
       }
     </script>
   </head>
@@ -96,7 +96,7 @@
       src="cartes_images/titleGame.jpg"
       alt=""
       class="starter"
-      onclick="Start();"
+      onclick="Start();animCards();"
     ></div>
     <div class="pc_commade">
       <!-- <img src="cartes_images/4.png" alt="" class='carte'>  -->
@@ -202,6 +202,7 @@
         </div>
       </div>
     </div>
+
     <script src="engine/gestionPic.js"></script>
     <script src="scripts/player.js"></script>
     <script src="scripts/computer_play.js"></script>
@@ -209,5 +210,6 @@
     <script src="scripts/ui_style.js"></script>
     <script src="lib/popper.js"></script>
     <script src="engine/comande_carte.js"></script>
+    <script src="scripts/startGameAnime.js"></script>
   </body>
 </html>

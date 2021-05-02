@@ -14,8 +14,8 @@ function computerPlay() {
   }
 
   let i = 0;
-  console.log('Computer fucking cards');
-  console.log(cartesJouers[0]);
+  //console.log('Computer fucking cards');
+  //console.log(cartesJouers[0]);
   while (DontHaveCard) {
     if (cardCoress.indexOf(cartesJouers[0][i]) != -1) {
       // jCommande_correspondance = [];
@@ -23,9 +23,9 @@ function computerPlay() {
         jCommande_correspondance = [];
       }
 
-      if ($('.pc_commade').style.opacity == '1') {
-        $('.pc_commade').style.opacity = '0';
-        $('.pc_commade').style.transform = 'translateY(16px)';
+      if ($(".pc_commade").style.opacity == "1") {
+        $(".pc_commade").style.opacity = "0";
+        $(".pc_commade").style.transform = "translateY(16px)";
       }
       // The computer found the card
       DontHaveCard = false;
@@ -56,8 +56,8 @@ function computerPlay() {
         } else {
           pikOngame = true;
         }
-        console.log('Voici les cartes a ramasser maintenant');
-        console.log(carteARamasser);
+        //console.log('Voici les cartes a ramasser maintenant');
+        //console.log(carteARamasser);
       }
       if (cartesJouers[0][i] == 53 || cartesJouers[0][i] == 54) {
         carteARamasser += 4;
@@ -78,8 +78,8 @@ function computerPlay() {
         } else {
           pikOngame = true;
         }
-        console.log('Voici les cartes a ramasser maintenant');
-        console.log(carteARamasser);
+        //console.log('Voici les cartes a ramasser maintenant');
+        //console.log(carteARamasser);
 
         // cartes.splice(0, 4);
         // computerReplay = true;
@@ -107,36 +107,36 @@ function computerPlay() {
         // et on commande sa dans un premier temps on suppose qu'il a des cartes ordinaires
         // sur la main
         let id_card_commader = comanderCarte(cartesJouers[0]);
-        let carte_commande = '';
-        let image_c = '';
+        let carte_commande = "";
+        let image_c = "";
 
         if (id_card_commader % 4 == 0) {
-          carte_commande = 'Macabo noir';
-          image_c = 'C_4';
+          carte_commande = "Macabo noir";
+          image_c = "C_4";
           jCommande_correspondance = cardCorrespondance[3];
           jCommande_correspondance.push(4);
         } else if (id_card_commader % 4 == 1) {
-          carte_commande = 'Arachide';
-          image_c = 'C_1';
+          carte_commande = "Arachide";
+          image_c = "C_1";
           jCommande_correspondance = cardCorrespondance[0];
           jCommande_correspondance.push(1);
         } else if (id_card_commader % 4 == 2) {
-          carte_commande = 'Coeur';
-          image_c = 'C_2';
+          carte_commande = "Coeur";
+          image_c = "C_2";
 
           jCommande_correspondance = cardCorrespondance[1];
           jCommande_correspondance.push(2);
         } else if (id_card_commader % 4 == 3) {
-          carte_commande = 'Biscuit';
-          image_c = 'C_3';
+          carte_commande = "Biscuit";
+          image_c = "C_3";
           jCommande_correspondance = cardCorrespondance[2];
           jCommande_correspondance.push(3);
         }
         jCommande_correspondance.splice(11, 4);
 
-        $('.pc_commade').style.opacity = '1';
+        $(".pc_commade").style.opacity = "1";
 
-        $('.pc_commade').innerHTML = `
+        $(".pc_commade").innerHTML = `
               <p>Je commande</p>
               <div class='commande_carte'>
                 <div class="pc_image">
@@ -164,16 +164,16 @@ function computerPlay() {
           cartes = init_(cartes);
           carteAMettreBanque = [];
 
-          let lastChild = $('#centerCardCOntainer').lastElementChild;
-          $('#centerCardCOntainer').innerHTML = '';
-          $('#centerCardCOntainer').appendChild(lastChild);
+          let lastChild = $("#centerCardCOntainer").lastElementChild;
+          $("#centerCardCOntainer").innerHTML = "";
+          $("#centerCardCOntainer").appendChild(lastChild);
 
           transformX = 0;
-          $('.centerCardRederer').style.transform = `translateX(-15px)`;
+          $(".centerCardRederer").style.transform = `translateX(-15px)`;
         }
         carte_depart = cartesJouers[0][i];
 
-        $('#centerCardCOntainer').innerHTML += `<img
+        $("#centerCardCOntainer").innerHTML += `<img
         src="cartes_images/${cartesJouers[0][i]}.png"
         alt=""
         class="carte"
@@ -182,15 +182,15 @@ function computerPlay() {
         // On deplace un peu la zone de cartes centrale
         transformX += 15;
         $(
-          '.centerCardRederer'
+          ".centerCardRederer"
         ).style.transform = `translateX(-${transformX}px)`;
       } else {
-        $('#centerCardCOntainer').innerHTML =
+        $("#centerCardCOntainer").innerHTML =
           `<img
       src="cartes_images/${cartesJouers[0][i]}.png"
       alt=""
       class="carte"
-      />` + $('#centerCardCOntainer').innerHTML;
+      />` + $("#centerCardCOntainer").innerHTML;
         // Il a jouer un 2 transparent
         // On ajoute le transparent a la banque
 
@@ -201,20 +201,20 @@ function computerPlay() {
           cartes = init_(cartes);
           carteAMettreBanque = [];
 
-          let lastChild = $('#centerCardCOntainer').lastElementChild;
-          $('#centerCardCOntainer').innerHTML = '';
-          $('#centerCardCOntainer').appendChild(lastChild);
+          let lastChild = $("#centerCardCOntainer").lastElementChild;
+          $("#centerCardCOntainer").innerHTML = "";
+          $("#centerCardCOntainer").appendChild(lastChild);
 
           transformX = 0;
-          $('.centerCardRederer').style.transform = `translateX(-15px)`;
+          $(".centerCardRederer").style.transform = `translateX(-15px)`;
         }
       }
 
       cartesJouers[0].splice(cartesJouers[0].indexOf(cartesJouers[0][i]), 1);
       if (cartesJouers[0].length == 0) {
-        $('#loser').style.pointerEvents = 'none';
+        $("#loser").style.pointerEvents = "none";
         setTimeout(function () {
-          console.log('Vous avez perdu!');
+          //console.log('Vous avez perdu!');
 
           gameover(false);
         }, 2500);
@@ -226,13 +226,13 @@ function computerPlay() {
         pikOngame = false;
       }
 
-      $('.cartes_banques img:last-child').onclick = piocher;
+      $(".cartes_banques img:last-child").onclick = piocher;
 
       // SI il joue le stop il joue encore
-      console.log('Me the PC  play this');
-      console.log(cartesJouers[0][i]);
+      //console.log('Me the PC  play this');
+      //console.log(cartesJouers[0][i]);
       if (computerReplay == true && cartesJouers[0].length > 0) {
-        console.log('Je suis censer rejouer');
+        //console.log('Je suis censer rejouer');
         computerPlay();
       }
     } else {
@@ -254,9 +254,9 @@ function computerPlay() {
 }
 
 function disableCardsActivatePick() {
-  $('.piocher_center').style.pointerEvents = 'none';
-  $('.piocher').style.pointerEvents = 'none';
-  $('.banque').style.pointerEvents = 'none';
+  $(".piocher_center").style.pointerEvents = "none";
+  $(".piocher").style.pointerEvents = "none";
+  $(".banque").style.pointerEvents = "none";
 
   let CartesToDisable = [];
   let PlayerPIk = [];
@@ -275,28 +275,28 @@ function disableCardsActivatePick() {
     }
   });
 
-  console.log('Les cartes a desactiver');
-  console.log(CartesToDisable);
-  console.log('Les piques du joeurs');
-  console.log(PlayerPIk);
+  //console.log('Les cartes a desactiver');
+  //console.log(CartesToDisable);
+  //console.log('Les piques du joeurs');
+  //console.log(PlayerPIk);
 
-  // console.log('Je teste sa ');
+  // //console.log('Je teste sa ');
   // let card_nums = 47;
-  // console.log($(`[card_id="${card_nums}"]`));
+  // //console.log($(`[card_id="${card_nums}"]`));
 
   // Disable others card and enable Power Card
   CartesToDisable.forEach(function (card_num) {
-    console.log('Big fucujhjhjjjlllkkkk!!!!');
-    console.log($(`[card_id="${card_num}"]`));
-    $(`[card_id="${card_num}"]`).style.opacity = '0.4';
-    $(`[card_id="${card_num}"]`).style.pointerEvents = 'none';
+    //console.log('Big fucujhjhjjjlllkkkk!!!!');
+    //console.log($(`[card_id="${card_num}"]`));
+    $(`[card_id="${card_num}"]`).style.opacity = "0.4";
+    $(`[card_id="${card_num}"]`).style.pointerEvents = "none";
   });
 
   PlayerPIk.forEach(function (card_num) {
-    console.log('Big fucujhjhjjjlllkkkk!!!!');
-    console.log($(`[card_id="${card_num}"]`));
-    $(`[card_id="${card_num}"]`).classList.add('blob');
-    $(`[card_id="${card_num}"]`).classList.add('yellow');
+    //console.log('Big fucujhjhjjjlllkkkk!!!!');
+    //console.log($(`[card_id="${card_num}"]`));
+    $(`[card_id="${card_num}"]`).classList.add("blob");
+    $(`[card_id="${card_num}"]`).classList.add("yellow");
   });
   // cartesJouers[1].push(cartes[0], cartes[1]);
   // cartes.splice(0, 2);
